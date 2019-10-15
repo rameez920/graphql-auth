@@ -1,8 +1,15 @@
 const { GraphQLServer } = require('graphql-yoga')
 
 const typeDefs = `
-type Query {
-  info: String!
+type User {
+  id: ID! @id
+  email: String! @unique
+  password: String!
+}
+
+type AuthPayload {
+  token: String
+  user: User
 }
 `
 const resolvers = {
